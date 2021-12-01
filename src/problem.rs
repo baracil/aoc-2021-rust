@@ -1,5 +1,5 @@
 use std::fmt::{Debug};
-use std::io;
+use std::{io, result};
 use std::fs;
 use std::fs::read_to_string;
 
@@ -12,6 +12,9 @@ pub struct Problem {
     input_filename:String
 }
 
+pub type Result<T> = result::Result<T, String>;
+
+
 impl Problem {
 
     pub fn new(day:u32) -> Self {
@@ -19,15 +22,19 @@ impl Problem {
         Self{day,input_filename}
     }
 
-    pub fn read_input(&self) -> io::Result<String> {
-        read_to_string(self.input_filename.to_string())
+    pub fn read_input(&self) -> Result<String> {
+        let content : io::Result<String> = read_to_string(self.input_filename.to_string());
+        match content {
+            Ok(content) => Result::Ok(content),
+            Err(err) => Result::Err(err.to_string())
+        }
     }
 
-    pub fn read_as_vec_of_line(&self) -> io::Result<Vec<String>> {
+    pub fn read_as_vec_of_line(&self) -> Result<Vec<String>> {
         self.read_input().map(to_vec_of_line)
     }
 
-    pub fn read_as_vec_of_u32(&self) -> io::Result<Vec<u32>> {
+    pub fn read_as_vec_of_u32(&self) -> Result<Vec<u32>> {
         self.read_input().map(to_vec_of_int)
     }
 }

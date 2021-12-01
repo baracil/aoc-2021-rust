@@ -1,9 +1,9 @@
 use std::io;
 
 use crate::{to_vec_of_int};
-use crate::problem::{Part, Problem};
+use crate::problem::{Part, Problem, Result};
 
-pub fn day01_launch(part: Part) -> io::Result<String> {
+pub fn day01_launch(part: Part) -> Result<String> {
     let problem = Problem::new(1);
     match part {
         Part::Part1 => day01_part1(&problem),
@@ -11,12 +11,12 @@ pub fn day01_launch(part: Part) -> io::Result<String> {
     }
 }
 
-fn day01_part1(problem: &Problem) -> io::Result<String> {
+fn day01_part1(problem: &Problem) -> Result<String> {
     problem.read_as_vec_of_u32()
         .map(|d| count_increase(d, 1))
 }
 
-fn day01_part2(problem: &Problem) -> io::Result<String> {
+fn day01_part2(problem: &Problem) -> Result<String> {
     problem.read_as_vec_of_u32()
         .map(|d| count_increase(d, 3))
 }
