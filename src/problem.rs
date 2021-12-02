@@ -18,8 +18,13 @@ pub type Result<T> = result::Result<T, String>;
 
 impl Problem {
 
-    pub fn new(day:u32) -> Self {
+    pub fn new(day:u32,) -> Self {
         let input_filename = form_filename(day);
+        Self{day,input_filename}
+    }
+
+    pub fn new_test(day:u32,) -> Self {
+        let input_filename = form_test_filename(day);
         Self{day,input_filename}
     }
 
@@ -29,6 +34,13 @@ impl Problem {
             Ok(content) => Result::Ok(content),
             Err(err) => Result::Err(err.to_string())
         }
+    }
+
+    pub fn read_input_map_line<U, F: FnMut(&str) -> U>(&self, op:F) -> Result<Vec<U>> {
+        Ok(self.read_input()?
+            .split("\n")
+            .map(op)
+            .collect())
     }
 
     pub fn read_as_vec_of_line(&self) -> Result<Vec<String>> {
@@ -56,4 +68,8 @@ pub fn to_vec_of_u32(content: String) -> Vec<u32> {
 
 fn form_filename(day: u32) -> String {
     return format!("./input/day_{number:0width$}.txt", number = day, width = 2);
+}
+
+fn form_test_filename(day: u32) -> String {
+    return format!("./input/test/day_{number:0width$}.txt", number = day, width = 2);
 }

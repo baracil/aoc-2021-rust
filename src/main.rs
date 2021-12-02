@@ -1,6 +1,7 @@
 mod problem;
 mod day_01;
 mod day_02;
+mod domain;
 
 use std::fs;
 use std::fs::ReadDir;
