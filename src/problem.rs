@@ -2,6 +2,7 @@ use std::fmt::{Debug};
 use std::{io, result};
 use std::fs;
 use std::fs::read_to_string;
+use std::str::Split;
 
 pub enum Part {
     Part1,
@@ -35,7 +36,7 @@ impl Problem {
     }
 
     pub fn read_as_vec_of_u32(&self) -> Result<Vec<u32>> {
-        self.read_input().map(to_vec_of_int)
+        self.read_input().map(to_vec_of_u32)
     }
 }
 
@@ -47,7 +48,7 @@ pub fn to_vec_of_line(content: String) -> Vec<String> {
         .collect()
 }
 
-pub fn to_vec_of_int(content: String) -> Vec<u32> {
+pub fn to_vec_of_u32(content: String) -> Vec<u32> {
     content.split("\n")
         .map(|s| s.parse::<u32>().unwrap())
         .collect()

@@ -1,6 +1,6 @@
 use std::io;
 
-use crate::{to_vec_of_int};
+use crate::{to_vec_of_u32};
 use crate::problem::{Part, Problem, Result};
 
 pub fn day01_launch(part: Part) -> Result<String> {
