@@ -17,6 +17,7 @@ fn part2() -> Result<String> {
     Err("Not Solved Yet".to_string())
 }
 
+#[allow(dead_code)]
 fn parse_input(for_test:bool) -> Result<String> {
     Problem::factory(for_test)(3).read_input()
 }
@@ -25,12 +26,11 @@ fn parse_input(for_test:bool) -> Result<String> {
 #[allow(dead_code)]
 mod tests {
     use crate::days::day_04::{parse_input, part1, part2};
-    use crate::problem::Problem;
 
     #[test]
     #[ignore]
     fn day04_part1_test()  {
-        let input = parse_input(true).unwrap();
+        let _input = parse_input(true).unwrap();
         let result = part1().unwrap();
         assert_eq!(result,"")
     }
@@ -38,7 +38,7 @@ mod tests {
     #[test]
     #[ignore]
     fn day04_part2_test()  {
-        let commands = parse_input(true).unwrap();
+        let _input = parse_input(true).unwrap();
         let result = part2().unwrap();
         assert_eq!(result,"")
     }

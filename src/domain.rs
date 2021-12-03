@@ -31,7 +31,7 @@ impl FromStr for SubCommand {
 }
 
 
-#[derive(Default)]
+#[derive(Default, Copy, Clone)]
 pub struct Submarine {
     position:Position,
     aim:i32,
@@ -41,22 +41,28 @@ pub struct Submarine {
 
 impl Submarine {
 
-    pub fn apply_command_stupid(&mut self, command:&SubCommand) -> &mut Self {
+    pub fn apply_command_stupid(&self, command:&SubCommand) -> Submarine {
         match command {
-            Forward(amount) => self.position.translate(*amount,0),
-            Down(amount) => self.position.translate(0,-*amount),
-            Up(amount) => self.position.translate(0,*amount),
-        };
-        self
+            Forward(amount) => self.translate(*amount,0),
+            Down(amount) => self.translate(0,-*amount),
+            Up(amount) => self.translate(0,*amount),
+        }
     }
 
-    pub fn apply_command(&mut self, command:&SubCommand) -> &mut Self {
+    pub fn apply_command(&self, command:&SubCommand) -> Submarine {
         match command {
-            Down(amount) => self.aim -= *amount,
-            Up(amount) => self.aim += *amount,
-            Forward(amount) => self.position.translate(*amount,*amount*self.aim),
-        };
-        self
+            Down(amount) => self.new_with_aim(self.aim - amount),
+            Up(amount) => self.new_with_aim(self.aim + amount),
+            Forward(amount) => self.translate(*amount,*amount*self.aim),
+        }
+    }
+
+    fn new_with_position(&self,position:Position) -> Submarine {
+        Submarine{position, aim:self.aim}
+    }
+
+    fn new_with_aim(&self,aim:i32) -> Submarine {
+        Submarine{position:self.position, aim}
     }
 
     pub fn horizontal(&self) -> i32 {
@@ -67,8 +73,9 @@ impl Submarine {
         return -self.position.y;
     }
 
-
-
+    fn translate(&self, dx: i32, dy: i32) -> Submarine {
+        self.new_with_position(self.position.translate(dx,dy))
+    }
 }
 
 
@@ -80,9 +87,8 @@ pub struct Position {
 
 impl Position {
 
-    pub fn translate(&mut self, dx:i32, dy:i32)  {
-        self.x += dx;
-        self.y += dy;
+    pub fn translate(&self, dx:i32, dy:i32) -> Position {
+        Position{x:self.x+dx,y:self.y+dy}
     }
 
 }

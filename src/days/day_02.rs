@@ -12,22 +12,12 @@ pub fn day02_launch(part: Part) -> Result<String> {
 }
 
 fn day02_part1(commands: &Vec<SubCommand>) -> i32 {
-    let mut submarine:Submarine = Submarine::default();
-
-    for command in commands {
-        submarine.apply_command_stupid(command);
-    }
-
+    let submarine:Submarine = commands.iter().fold(Submarine::default(),|s,c| s.apply_command_stupid(c));
     submarine.horizontal()*submarine.depth()
 }
 
 fn day02_part2(commands: &Vec<SubCommand>) -> i32 {
-    let mut submarine:Submarine = Submarine::default();
-
-    for command in commands {
-        submarine.apply_command(command);
-    }
-
+    let submarine:Submarine = commands.iter().fold(Submarine::default(),|s,c| s.apply_command(c));
     submarine.horizontal()*submarine.depth()
 }
 
