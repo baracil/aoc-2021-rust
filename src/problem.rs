@@ -1,15 +1,12 @@
-use std::fmt::{Debug};
 use std::{io, result};
-use std::fs;
 use std::fs::read_to_string;
-use std::str::Split;
 
 pub enum Part {
     Part1,
     Part2
 }
+
 pub struct Problem {
-    day:u32,
     input_filename:String
 }
 
@@ -18,16 +15,26 @@ pub type Result<T> = result::Result<T, String>;
 
 impl Problem {
 
-    pub fn new(day:u32,) -> Self {
+    pub fn factory(for_test:bool) -> impl FnOnce(u32) -> Problem {
+        if for_test {
+            Problem::test_of_day
+        } else {
+            Problem::of_day
+        }
+    }
+
+    pub fn of_day(day:u32) -> Self {
         let input_filename = form_filename(day);
-        Self{day,input_filename}
+        Self{input_filename}
     }
 
-    pub fn new_test(day:u32,) -> Self {
+    #[allow(dead_code)]
+    pub fn test_of_day(day:u32) -> Self {
         let input_filename = form_test_filename(day);
-        Self{day,input_filename}
+        Self{input_filename}
     }
 
+    #[allow(dead_code)]
     pub fn read_input(&self) -> Result<String> {
         let content : io::Result<String> = read_to_string(self.input_filename.to_string());
         match content {
@@ -36,18 +43,21 @@ impl Problem {
         }
     }
 
-    pub fn read_input_map_line<U, F: FnMut(&str) -> U>(&self, op:F) -> Result<Vec<U>> {
+    #[allow(dead_code)]
+    pub fn read_input_as_mapped_lines<U, F: FnMut(&str) -> U>(&self, op:F) -> Result<Vec<U>> {
         Ok(self.read_input()?
             .split("\n")
             .map(op)
             .collect())
     }
 
-    pub fn read_as_vec_of_line(&self) -> Result<Vec<String>> {
+    #[allow(dead_code)]
+    pub fn read_input_as_vec_of_line(&self) -> Result<Vec<String>> {
         self.read_input().map(to_vec_of_line)
     }
 
-    pub fn read_as_vec_of_u32(&self) -> Result<Vec<u32>> {
+    #[allow(dead_code)]
+    pub fn read_input_as_vec_of_u32(&self) -> Result<Vec<u32>> {
         self.read_input().map(to_vec_of_u32)
     }
 }
@@ -67,7 +77,7 @@ pub fn to_vec_of_u32(content: String) -> Vec<u32> {
 }
 
 fn form_filename(day: u32) -> String {
-    return format!("./input/day_{number:0width$}.txt", number = day, width = 2);
+    return format!("./input/problem/day_{number:0width$}.txt", number = day, width = 2);
 }
 
 fn form_test_filename(day: u32) -> String {

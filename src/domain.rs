@@ -1,4 +1,3 @@
-use std::ops::{Deref, Sub};
 use std::str::FromStr;
 use crate::domain::SubCommand::{Down, Forward, Up};
 
@@ -32,6 +31,7 @@ impl FromStr for SubCommand {
 }
 
 
+#[derive(Default)]
 pub struct Submarine {
     position:Position,
     aim:i32,
@@ -40,9 +40,6 @@ pub struct Submarine {
 
 
 impl Submarine {
-    pub fn default() -> Self {
-        Submarine{position:Position::zero(),aim:0}
-    }
 
     pub fn apply_command_stupid(&mut self, command:&SubCommand) -> &mut Self {
         match command {
@@ -75,16 +72,13 @@ impl Submarine {
 }
 
 
-#[derive(Copy, Clone)]
+#[derive(Copy, Clone, Default)]
 pub struct Position {
     x:i32,
     y:i32
 }
 
 impl Position {
-    pub fn zero() -> Self {
-        Self{x:0,y:0}
-    }
 
     pub fn translate(&mut self, dx:i32, dy:i32)  {
         self.x += dx;
