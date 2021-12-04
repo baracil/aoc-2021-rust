@@ -2,7 +2,7 @@ use crate::Part;
 use crate::problem::{Problem, Result};
 
 #[allow(dead_code)]
-pub fn day03_launch(part: Part) -> Result<String> {
+pub fn dayXX_launch(part: Part) -> Result<String> {
     match part {
         Part::Part1 => part1(),
         Part::Part2 => part2()
@@ -25,11 +25,11 @@ fn parse_input(for_test:bool) -> Result<String> {
 #[cfg(test)]
 #[allow(dead_code)]
 mod tests {
-    use crate::days::day_04::{parse_input, part1, part2};
+    use crate::days::day_XX::{parse_input, part1, part2};
 
     #[test]
     #[ignore]
-    fn day04_part1_test()  {
+    fn dayXX_part1_test()  {
         let _input = parse_input(true).unwrap();
         let result = part1().unwrap();
         assert_eq!(result,"")
@@ -37,7 +37,7 @@ mod tests {
 
     #[test]
     #[ignore]
-    fn day04_part2_test()  {
+    fn dayXX_part2_test()  {
         let _input = parse_input(true).unwrap();
         let result = part2().unwrap();
         assert_eq!(result,"")
