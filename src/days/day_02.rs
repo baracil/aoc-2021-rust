@@ -2,6 +2,7 @@ use crate::domain::{SubCommand, Submarine};
 use crate::Part;
 use crate::problem::{Problem, Result};
 
+#[allow(dead_code)]
 pub fn day02_launch(part: Part) -> Result<String> {
     let commands = parse_commands(false)?;
     let result = match part {

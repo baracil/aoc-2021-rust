@@ -13,6 +13,20 @@ pub struct Problem {
 pub type Result<T> = result::Result<T, String>;
 
 
+
+
+use std::convert::AsMut;
+
+pub fn clone_into_array<A, T>(slice: &[T]) -> A
+    where A: Sized + Default + AsMut<[T]>,
+          T: Clone
+{
+    let mut a = Default::default();
+    <A as AsMut<[T]>>::as_mut(&mut a).clone_from_slice(slice);
+    a
+}
+
+
 impl Problem {
 
     pub fn factory(for_test:bool) -> impl FnOnce(u32) -> Problem {
