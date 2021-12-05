@@ -1,10 +1,10 @@
 use crate::domain::{SubCommand, Submarine};
 use crate::Part;
-use crate::problem::{Problem, Result};
+use crate::problem::{Problem, AOCResult};
 
 #[allow(dead_code)]
-pub fn day02_launch(part: Part) -> Result<String> {
-    let commands = parse_commands(false)?;
+pub fn day02_launch(part: Part) -> AOCResult<String> {
+    let commands = parse_input(false)?;
     let result = match part {
         Part::Part1 => day02_part1(&commands),
         Part::Part2 => day02_part2(&commands)
@@ -22,24 +22,24 @@ fn day02_part2(commands: &Vec<SubCommand>) -> i32 {
     submarine.horizontal()*submarine.depth()
 }
 
-fn parse_commands(for_test:bool) -> Result<Vec<SubCommand>> {
+fn parse_input(for_test:bool) -> AOCResult<Vec<SubCommand>> {
     Problem::factory(for_test)(2).read_input_as_mapped_lines(|line| line.parse::<SubCommand>().unwrap())
 }
 
 #[cfg(test)]
 mod tests {
-    use crate::days::day_02::{day02_part1, day02_part2, parse_commands};
+    use crate::days::day_02::main::{day02_part1, day02_part2, parse_input};
 
     #[test]
     fn day02_part1_test()  {
-        let commands = parse_commands(true).unwrap();
+        let commands = parse_input(true).unwrap();
         let result = day02_part1(&commands);
         assert_eq!(result,150)
     }
 
     #[test]
     fn day02_part2_test()  {
-        let commands = parse_commands(true).unwrap();
+        let commands = parse_input(true).unwrap();
         let result = day02_part2(&commands);
         assert_eq!(result,900)
     }

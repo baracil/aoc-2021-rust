@@ -10,21 +10,8 @@ pub struct Problem {
     input_filename:String
 }
 
-pub type Result<T> = result::Result<T, String>;
+pub type AOCResult<T> = result::Result<T, String>;
 
-
-
-
-use std::convert::AsMut;
-
-pub fn clone_into_array<A, T>(slice: &[T]) -> A
-    where A: Sized + Default + AsMut<[T]>,
-          T: Clone
-{
-    let mut a = Default::default();
-    <A as AsMut<[T]>>::as_mut(&mut a).clone_from_slice(slice);
-    a
-}
 
 
 impl Problem {
@@ -49,16 +36,16 @@ impl Problem {
     }
 
     #[allow(dead_code)]
-    pub fn read_input(&self) -> Result<String> {
+    pub fn read_input(&self) -> AOCResult<String> {
         let content : io::Result<String> = read_to_string(self.input_filename.to_string());
         match content {
-            Ok(content) => Result::Ok(content),
-            Err(err) => Result::Err(err.to_string())
+            Ok(content) => AOCResult::Ok(content),
+            Err(err) => AOCResult::Err(err.to_string())
         }
     }
 
     #[allow(dead_code)]
-    pub fn read_input_as_mapped_lines<U, F: FnMut(&str) -> U>(&self, op:F) -> Result<Vec<U>> {
+    pub fn read_input_as_mapped_lines<U, F: FnMut(&str) -> U>(&self, op:F) -> AOCResult<Vec<U>> {
         Ok(self.read_input()?
             .split("\n")
             .map(op)
@@ -66,12 +53,12 @@ impl Problem {
     }
 
     #[allow(dead_code)]
-    pub fn read_input_as_vec_of_line(&self) -> Result<Vec<String>> {
+    pub fn read_input_as_vec_of_line(&self) -> AOCResult<Vec<String>> {
         self.read_input().map(to_vec_of_line)
     }
 
     #[allow(dead_code)]
-    pub fn read_input_as_vec_of_u32(&self) -> Result<Vec<u32>> {
+    pub fn read_input_as_vec_of_u32(&self) -> AOCResult<Vec<u32>> {
         self.read_input().map(to_vec_of_u32)
     }
 }

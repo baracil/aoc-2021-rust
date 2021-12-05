@@ -1,5 +1,5 @@
 use crate::Part;
-use crate::problem::{Problem, Result};
+use crate::problem::{Problem, AOCResult};
 
 enum BalanceResult {
     Value(i32),
@@ -105,7 +105,7 @@ struct LifeSupport {
 
 
 #[allow(dead_code)]
-pub fn day03_launch(part: Part) -> Result<String> {
+pub fn day03_launch(part: Part) -> AOCResult<String> {
     let diagnostics = parse_input(false)?;
     match part {
         Part::Part1 => Ok(part1(&diagnostics).to_string()),
@@ -124,7 +124,7 @@ fn part2(diagnostics: &DiagnosticReport) -> i32 {
 }
 
 
-fn parse_input(for_test: bool) -> Result<DiagnosticReport> {
+fn parse_input(for_test: bool) -> AOCResult<DiagnosticReport> {
     let lines = Problem::factory(for_test)(3).read_input_as_vec_of_line()?;
     let size = lines.get(0).map_or(0, |l| l.len());
 
@@ -140,7 +140,7 @@ fn parse_input(for_test: bool) -> Result<DiagnosticReport> {
 #[cfg(test)]
 #[allow(dead_code)]
 mod tests {
-    use crate::days::day_03::{parse_input, part1, part2};
+    use crate::days::day_03::main::{parse_input, part1, part2};
 
     #[test]
     fn day03_part1_test() {

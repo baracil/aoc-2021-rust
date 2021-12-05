@@ -1,31 +1,31 @@
 use crate::Part;
-use crate::problem::{Problem, Result};
+use crate::problem::{AOCResult, Problem, Result};
 
 #[allow(dead_code)]
-pub fn dayXX_launch(part: Part) -> Result<String> {
+pub fn dayXX_launch(part: Part) -> AOCResult<String> {
     match part {
         Part::Part1 => part1(),
         Part::Part2 => part2()
     }
 }
 
-fn part1() -> Result<String> {
+fn part1() -> AOCResult<String> {
     Err("Not Solved Yet".to_string())
 }
 
-fn part2() -> Result<String> {
+fn part2() -> AOCResult<String> {
     Err("Not Solved Yet".to_string())
 }
 
 #[allow(dead_code)]
-fn parse_input(for_test:bool) -> Result<String> {
+fn parse_input(for_test:bool) -> AOCResult<String> {
     Problem::factory(for_test)(3).read_input()
 }
 
 #[cfg(test)]
 #[allow(dead_code)]
 mod tests {
-    use crate::days::day_XX::{parse_input, part1, part2};
+    use crate::days::day_XX::main::{parse_input, part1, part2};
 
     #[test]
     #[ignore]

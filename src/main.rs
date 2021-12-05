@@ -1,10 +1,11 @@
-use crate::days::day_04::day04_launch;
+use crate::days::day_04::main::day04_launch;
 use crate::problem::Part;
 
 mod problem;
 mod domain;
 mod days;
 mod macros;
+pub mod tools;
 
 
 #[warn(dead_code)]
