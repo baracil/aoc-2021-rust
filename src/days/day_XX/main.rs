@@ -1,5 +1,5 @@
 use crate::Part;
-use crate::problem::{AOCResult, Problem, Result};
+use crate::problem::{AOCResult, Problem};
 
 #[allow(dead_code)]
 pub fn dayXX_launch(part: Part) -> AOCResult<String> {
