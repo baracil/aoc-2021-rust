@@ -1,7 +1,5 @@
 use std::collections::HashMap;
 use std::hash::Hash;
-use std::ops::Deref;
-use std::ptr::{null, null_mut};
 use std::result::Result as StdResult;
 use std::str::FromStr;
 
@@ -67,7 +65,7 @@ enum GridState {
 
 impl Grid {
     fn parse(lines: [&str; GRID_SIZE]) -> Self {
-        let mut numbers: HashMap<u32, Position> = lines.iter()
+        let numbers: HashMap<u32, Position> = lines.iter()
             .enumerate()
             .flat_map(|(row, line)| {
                 line.split_whitespace()
@@ -156,7 +154,7 @@ impl Day04Input {
         let mut numbers = self.numbers.clone();
         let drawn_number = numbers.remove(0);
 
-        let mut grids:Vec<Grid> = self.grids
+        let grids:Vec<Grid> = self.grids
             .iter()
             .filter(|g| matches!(g.state,NotWinning))
             .map(|g| g.push_number(drawn_number))
@@ -187,8 +185,8 @@ impl FromStr for Day04Input {
 
         let empty_lines_index: Vec<usize> = lines.iter()
             .enumerate()
-            .filter(|(idx, line)| line.trim().is_empty())
-            .map(|(idx, line)| idx).collect();
+            .filter(|(_idx, line)| line.trim().is_empty())
+            .map(|(idx, _line)| idx).collect();
 
         let grids: Vec<Grid> = empty_lines_index
             .iter()
