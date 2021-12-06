@@ -1,6 +1,6 @@
 use crate::days::day_05::vent::Vent;
 use crate::{parse_input, Part};
-use crate::days::day_05::OverlapCounter::OverlapCounter;
+use crate::days::day_05::overlap_counter::OverlapCounter;
 use crate::problem::{AOCResult, Problem};
 
 #[allow(dead_code)]
