@@ -1,4 +1,3 @@
-use std::ops::Deref;
 use std::str::FromStr;
 
 #[derive(Clone,Copy)]
@@ -12,6 +11,7 @@ impl School {
         (0..9).map(|i| self.fish_population[i] * t[i]).sum()
     }
 
+    #[allow(dead_code)]
     pub fn single_fish(timer:usize) -> Self {
         let mut fish_population = [0;9];
         fish_population[timer] = 1;

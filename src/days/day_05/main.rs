@@ -27,7 +27,7 @@ fn part1(vent:&Vec<Vent>) -> AOCResult<String> {
 }
 
 fn part2(vent:&Vec<Vent>) -> AOCResult<String> {
-    solve(vent,|v| true)
+    solve(vent,|_v| true)
 }
 
 #[allow(dead_code)]

@@ -1,6 +1,4 @@
-use std::fmt::format;
 use std::str::FromStr;
-use crate::parse_input;
 
 #[derive(Copy, Clone, Eq, Hash)]
 pub struct Position {

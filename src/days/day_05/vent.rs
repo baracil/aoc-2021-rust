@@ -1,8 +1,5 @@
-use std::iter::Map;
-use std::ops::{Range, RangeInclusive, ShlAssign};
 use std::str::FromStr;
 use crate::days::day_05::position::Position;
-use crate::problem::AOCResult;
 
 pub struct Vent {
     start: Position,
@@ -10,9 +7,6 @@ pub struct Vent {
 }
 
 impl Vent {
-    pub fn with(start: Position, end: Position) -> Self {
-        Vent { start, end }
-    }
 
     pub fn is_vertical_or_horizontal(&self) -> bool {
         self.start.x() == self.end.x() || self.start.y() == self.end.y()
