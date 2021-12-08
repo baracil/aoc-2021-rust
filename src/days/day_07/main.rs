@@ -1,11 +1,9 @@
-use std::sync::atomic::compiler_fence;
 use crate::{parse_input, Part};
-use crate::Part::Part1;
 use crate::problem::{AOCResult, Problem};
 
 #[allow(dead_code)]
 pub fn day07_launch(part: Part) -> AOCResult<String> {
-    let mut crabs = parse_input(false)?;
+    let crabs = parse_input(false)?;
     match part {
         Part::Part1 => part1(&crabs),
         Part::Part2 => part2(&crabs)
@@ -25,7 +23,7 @@ fn part2(crabs: &Vec<i32>) -> AOCResult<String> {
 
     let result = {
         let v_min = consumption(p_min);
-        if (p_min == p_max) {
+        if p_min == p_max {
             v_min
         } else {
             let v_max = consumption(p_max);
@@ -75,7 +73,7 @@ fn arithmetic_consumption(position: i32, target: i32) -> i32 {
 }
 
 fn derivate_part2(position:i32, target:i32) -> i32 {
-    let dif = (position - target);
+    let dif = position - target;
     (2*dif.abs()+1)*dif.signum()
 }
 

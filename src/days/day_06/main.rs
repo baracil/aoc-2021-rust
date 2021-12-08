@@ -1,5 +1,5 @@
 use crate::days::day_06::school::School;
-use crate::{parse_input, Part};
+use crate::{Part};
 use crate::problem::{AOCResult, Problem};
 
 const GEN_80:[u128;9]=[1421,1401,1191,1154,1034,950,905,779,768];
