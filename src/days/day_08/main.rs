@@ -31,15 +31,15 @@ use crate::problem::{AOCResult, Problem};
 ///
 /// 7     a_3 = 1 0 1 0 0 1 0  (3
 ///
-/// The other are not used so not display here.
+/// The other are not used so not displayed here.
 ///
-/// If you compute (a_6+a_5-4xa_3) you get
+/// If you compute (a_6+a_5-4a_3) you get
 ///                a b c d e f g
 /// a_6+a_5-4*a_3  2 4 0 5 3 1 6
 ///
-/// So if you perform the same operation with permutated letter
-/// you can match with the histogram wich letter correspond to (the
-/// one with 0 in the result is c, the one with 1 is f ...
+/// So if you perform the same operation with permuted letters
+/// you can match with the histogram what letter correspond to
+/// what (the one with 0 in the result is c, the one with 1 is f ...
 ///
 #[allow(dead_code)]
 pub fn day08_launch(part: Part) -> AOCResult<String> {
