@@ -1,4 +1,4 @@
-use crate::days::day_09::main::day09_launch;
+use crate::days::day_10::main::day10_launch;
 use crate::problem::Part;
 
 mod problem;
@@ -10,7 +10,7 @@ pub mod tools;
 
 #[warn(dead_code)]
 fn main() {
-    let launch = day09_launch;
+    let launch = day10_launch;
 
     println!("part 1 : {:?}",launch(Part::Part1));
     println!("part 2 : {:?}",launch(Part::Part2));
