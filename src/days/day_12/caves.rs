@@ -88,8 +88,8 @@ impl<'a> CavesAcc<'a> {
         let node0 = self.handle_name_and_get_index(node_names[0]);
         let node1 = self.handle_name_and_get_index(node_names[1]);
 
-        self.graph.entry(node0).or_insert_with(|| Vec::new()).push(node1);
-        self.graph.entry(node1).or_insert_with(|| Vec::new()).push(node0);
+        self.graph.entry(node0).or_insert_with(Vec::new).push(node1);
+        self.graph.entry(node1).or_insert_with(Vec::new).push(node0);
     }
 
     pub fn build(self) -> Caves {
