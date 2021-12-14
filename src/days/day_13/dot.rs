@@ -1,11 +1,10 @@
 use std::cmp::Ordering;
-use std::cmp::Ordering::{Equal, Less};
 use std::str::FromStr;
 use crate::days::day_13::fold::Fold;
 use crate::days::day_13::fold::Fold::{X, Y};
 use crate::parse_input;
 
-#[derive(Copy, Clone, Eq, PartialEq, Hash, Ord)]
+#[derive(Copy, Clone, Eq, PartialEq, Hash)]
 pub struct Dot {
     x: i32,
     y: i32,

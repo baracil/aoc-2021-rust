@@ -46,7 +46,7 @@ impl Map {
 
         let nb_cols = self.nb_cols as i32;
 
-        for offsets in vec![-1 - nb_cols, -nb_cols, 1 - nb_cols, -1, 1, -1 + nb_cols, nb_cols, 1 + nb_cols] {
+        for offsets in &[-1 - nb_cols, -nb_cols, 1 - nb_cols, -1, 1, -1 + nb_cols, nb_cols, 1 + nb_cols] {
             let idx = ((index as i32) + offsets) as usize;
             if self.octopuses[idx] == SENTINEL || self.flashed[idx] {
                 continue;
@@ -74,7 +74,7 @@ impl Map {
 
 
 impl Map {
-    pub fn parse(lines: &Vec<String>) -> Map {
+    pub fn parse(lines: &[String]) -> Map {
         let nb_rows = lines.len() + 2;
         let nb_cols = lines[0].len() + 2;
 
@@ -89,6 +89,6 @@ impl Map {
 
         let flashed = (0..octopuses.len()).map(|_| false).collect();
 
-        return Map { octopuses, nb_cols, nb_rows,flashed, nb_flashes: 0, to_flash: VecDeque::new() };
+        Map { octopuses, nb_cols, nb_rows,flashed, nb_flashes: 0, to_flash: VecDeque::new() }
     }
 }

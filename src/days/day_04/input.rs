@@ -71,7 +71,7 @@ impl FromStr for Day04Input {
 
         let numbers: Vec<u32> = lines.get(0)
             .expect("At least one line")
-            .split(",")
+            .split(',')
             .map(|token| token.parse::<u32>().expect("A u32 as string"))
             .collect();
 
@@ -83,7 +83,7 @@ impl FromStr for Day04Input {
         let grids: Vec<Grid> = empty_lines_index
             .iter()
             .map(|idx| clone_into_array(&lines[idx + 1..idx + 1 + GRID_SIZE]))
-            .map(|sub_lines| Grid::parse(sub_lines))
+            .map(Grid::parse)
             .collect();
 
 

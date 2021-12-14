@@ -38,7 +38,7 @@ impl Sheet {
 
 
     pub fn parse(dots:&str) -> Sheet {
-        let dots = dots.split("\n").map(|l| parse_input!(l,Dot)).collect::<HashSet<_>>();
+        let dots = dots.split('\n').map(|l| parse_input!(l,Dot)).collect::<HashSet<_>>();
         Sheet{dots}
     }
 

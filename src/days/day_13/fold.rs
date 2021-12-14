@@ -17,9 +17,7 @@ impl FromStr for Fold {
     type Err = String;
 
     fn from_str(instruction: &str) -> Result<Self, Self::Err> {
-        let info = instruction.split(" ")
-            .skip(2)
-            .next()
+        let info = instruction.split(' ').nth(2)
             .ok_or_else(|| Fold::create_error_msg(instruction))?
             .split_once("=")
             .ok_or_else(|| Fold::create_error_msg(instruction))?;

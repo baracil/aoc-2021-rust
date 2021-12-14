@@ -12,12 +12,12 @@ pub fn day02_launch(part: Part) -> AOCResult<String> {
     Ok(result.to_string())
 }
 
-fn day02_part1(commands: &Vec<SubCommand>) -> i32 {
+fn day02_part1(commands: &[SubCommand]) -> i32 {
     let submarine:Submarine = commands.iter().fold(Submarine::default(),|s,c| s.apply_command_stupid(c));
     submarine.horizontal()*submarine.depth()
 }
 
-fn day02_part2(commands: &Vec<SubCommand>) -> i32 {
+fn day02_part2(commands: &[SubCommand]) -> i32 {
     let submarine:Submarine = commands.iter().fold(Submarine::default(),|s,c| s.apply_command(c));
     submarine.horizontal()*submarine.depth()
 }

@@ -1,4 +1,3 @@
-
 pub struct Map {
     heights: Vec<u32>,
     nb_cols: usize,
@@ -39,18 +38,17 @@ impl Map {
     }
 
     pub fn compute_part2(&self) -> u32 {
-        compute_basin_sizes(&self)
+        compute_basin_sizes(self)
     }
 
     fn is_low(&self, pos: &usize, h: &u32) -> bool {
         if *h == 9 {
             return false;
         }
-        let low = *h < self.heights[pos - 1]
+        *h < self.heights[pos - 1]
             && *h < self.heights[pos + 1]
             && *h < self.heights[pos + self.nb_cols]
-            && *h < self.heights[pos - self.nb_cols];
-        return low;
+            && *h < self.heights[pos - self.nb_cols]
     }
 }
 
@@ -71,9 +69,8 @@ fn compute_basin_sizes(map: &Map) -> u32 {
         sizes.push(-size);
     };
 
-    sizes.sort();
-    (0..3).map(|i| sizes[i]).fold(-1, |i1,i2| i1*i2).abs() as u32
-
+    sizes.sort_unstable();
+    (0..3).map(|i| sizes[i]).fold(-1, |i1, i2| i1 * i2).abs() as u32
 }
 
 fn fill_basin(visited: &mut Vec<bool>, position: usize, nb_cols: usize) -> u32 {
@@ -83,9 +80,9 @@ fn fill_basin(visited: &mut Vec<bool>, position: usize, nb_cols: usize) -> u32 {
 
     visited[position] = true;
 
-    return 1
+    1
         + fill_basin(visited, position - 1, nb_cols)
         + fill_basin(visited, position + 1, nb_cols)
         + fill_basin(visited, position - nb_cols, nb_cols)
-        + fill_basin(visited, position + nb_cols, nb_cols);
+        + fill_basin(visited, position + nb_cols, nb_cols)
 }

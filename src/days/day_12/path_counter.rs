@@ -14,12 +14,12 @@ impl PathCounter {
 
     pub fn count_pathes_part1(caves: &Caves) -> usize {
         let mut counter = PathCounter::create(caves.number_of_nodes());
-        counter.count_part1(&caves)
+        counter.count_part1(caves)
     }
 
     pub fn count_pathes_part2(caves: &Caves) -> usize {
         let mut counter = PathCounter::create(caves.number_of_nodes());
-        counter.count_part2(&caves)
+        counter.count_part2(caves)
     }
 
     fn count_part1(&mut self, caves: &Caves) -> usize {

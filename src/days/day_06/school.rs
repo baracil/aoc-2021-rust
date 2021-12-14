@@ -1,6 +1,7 @@
 use std::str::FromStr;
+use crate::parse_input;
 
-#[derive(Clone,Copy)]
+#[derive(Clone,Copy,Default)]
 pub struct School {
     fish_population:[u128;9],
 }
@@ -37,12 +38,6 @@ impl School {
     }
 }
 
-impl Default for School {
-    fn default() -> Self {
-        School{ fish_population:[0;9]}
-    }
-}
-
 impl FromStr for School {
     type Err = String;
 
@@ -50,8 +45,8 @@ impl FromStr for School {
 
         let mut school = School::default();
 
-        let result = line.split(",")
-            .map(|n| n.parse::<usize>().expect(&format!("Could not parse {}",n)))
+        let result = line.split(',')
+            .map(|n| parse_input!(n,usize))
             .fold(&mut school, |s, timer| s.add_fish(timer));
 
         Ok(School{fish_population:result.fish_population})

@@ -1,8 +1,6 @@
-use std::collections::HashSet;
 use crate::days::day_13::fold::Fold;
 use crate::days::day_13::sheet::Sheet;
 use crate::{parse_input, Part};
-use crate::days::day_13::dot::Dot;
 use crate::problem::{AOCResult, Problem};
 
 #[allow(dead_code)]
@@ -29,11 +27,11 @@ fn part2(sheet:&Sheet, folds:&[Fold]) -> AOCResult<String> {
 fn parse_input(for_test:bool) -> AOCResult<(Sheet,Vec<Fold>)> {
     let input = Problem::factory(for_test)(13).read_input()?;
 
-    let option = input.split_once("\n\n").ok_or_else(|| "Cannot parse input")?;
+    let option = input.split_once("\n\n").ok_or("Cannot parse input")?;
 
     let sheet = Sheet::parse(option.0);
 
-    let result:Vec<Fold> = option.1.split("\n").map(|l| parse_input!(l,Fold)).collect();
+    let result:Vec<Fold> = option.1.split('\n').map(|l| parse_input!(l,Fold)).collect();
 
     Ok((sheet, result))
 }
@@ -54,10 +52,10 @@ mod tests {
     fn day13_part2_test()  {
         let (sheet,folds) = parse_input(true).unwrap();
         let result = part2(&sheet, &folds).unwrap();
-        assert_eq!(result,"\n#####
-#...#
-#...#
-#...#
-#####")
+        assert_eq!(result,"\n█████
+█   █
+█   █
+█   █
+█████")
     }
 }

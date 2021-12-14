@@ -11,13 +11,13 @@ pub fn day11_launch(part: Part) -> AOCResult<String> {
     }
 }
 
-fn part1(lines:&Vec<String>) -> AOCResult<String> {
+fn part1(lines:&[String]) -> AOCResult<String> {
     let mut map = Map::parse(lines);
     (0..100).for_each(|_| {map.perform_one_step();});
     Ok(map.nb_flashes().to_string())
 }
 
-fn part2(lines:&Vec<String>) -> AOCResult<String> {
+fn part2(lines:&[String]) -> AOCResult<String> {
     let mut map = Map::parse(lines);
     let mut i = 0;
     loop {

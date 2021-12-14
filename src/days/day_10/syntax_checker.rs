@@ -1,6 +1,6 @@
 use crate::days::day_10::stack::Stack;
 
-pub fn syntax_score(line: &String) -> usize {
+pub fn syntax_score(line: &str) -> usize {
     let mut stack = Stack::new(line.len());
 
 
@@ -17,7 +17,7 @@ pub fn syntax_score(line: &String) -> usize {
             return score;
         }
     };
-    return 0;
+    0
 }
 
 fn push(stack: &mut Stack<char>, c: char) -> Option<usize> {

@@ -33,7 +33,7 @@ pub struct Caves {
 impl Caves {
 
     pub fn parse(input:&str) -> Self {
-        input.split("\n").fold(CavesAcc::default(), |mut acc, line| {
+        input.split('\n').fold(CavesAcc::default(), |mut acc, line| {
             acc.push_one_line(line);
             acc
         }).build()
@@ -56,10 +56,7 @@ impl Caves {
     }
 
     pub(crate) fn is_start_or_small_cave(&self, idx: usize) -> bool {
-        match self.nodes[idx] {
-            Start | SmallCave => true,
-            _ => false
-        }
+        matches!(self.nodes[idx],Start|SmallCave)
     }
 
     pub(crate) fn is_small_cave(&self, idx: usize) -> bool {
@@ -67,7 +64,7 @@ impl Caves {
     }
 }
 
-
+#[derive(Default)]
 pub struct CavesAcc<'a> {
     start_idx: usize,
     nodes: Vec<Node>,
@@ -75,15 +72,10 @@ pub struct CavesAcc<'a> {
     graph: HashMap<usize, Vec<usize>>,
 }
 
-impl<'a> Default for CavesAcc<'a> {
-    fn default() -> Self {
-        CavesAcc { start_idx: 0, nodes: Vec::new(), node_idx: HashMap::new(), graph: HashMap::new() }
-    }
-}
 
 impl<'a> CavesAcc<'a> {
     pub fn push_one_line(&mut self, line: &'a str) {
-        let node_names: Vec<&str> = line.split("-").collect();
+        let node_names: Vec<&str> = line.split('-').collect();
 
         let node0 = self.handle_name_and_get_index(node_names[0]);
         let node1 = self.handle_name_and_get_index(node_names[1]);

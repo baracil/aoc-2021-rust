@@ -1,7 +1,7 @@
 use crate::days::day_10::stack::Stack;
 
 
-pub fn complete_score(line: &String) -> Option<usize> {
+pub fn complete_score(line: &str) -> Option<usize> {
     let mut stack = Stack::new(line.len());
 
 
@@ -47,9 +47,5 @@ fn push_part2(stack: &mut Stack<char>, c: char) -> bool {
 fn depop_part2(stack: &mut Stack<char>, expected: char) -> bool {
     let depoped = stack.pop();
 
-    if depoped == Some(expected) {
-        true
-    } else {
-        false
-    }
+    depoped == Some(expected)
 }

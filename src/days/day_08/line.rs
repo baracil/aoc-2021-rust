@@ -103,26 +103,26 @@ impl FromStr for Line<String> {
     type Err = String;
 
     fn from_str(line_str: &str) -> Result<Self, Self::Err> {
-        let tokens:Vec<&str> = line_str.split("|").collect();
+        let tokens:Vec<&str> = line_str.split('|').collect();
 
         let numbers_str:Vec<&str> = tokens.get(0).ok_or(format!("Cannot parse '{}'",line_str))?
             .trim()
-            .split(" ")
+            .split(' ')
             .collect();
         let digits_str:Vec<&str> = tokens.get(1).ok_or(format!("Cannot parse '{}'",line_str))?
             .trim()
-            .split(" ")
+            .split(' ')
             .collect();
 
         let mut numbers = Vec::new();
         let mut digits = Vec::new();
 
-        for i in 0..10 {
-            numbers.push(numbers_str[i].to_string());
+        for number in numbers_str.iter(){
+            numbers.push(number.to_string());
         };
 
-        for i in 0..4 {
-            digits.push(digits_str[i].to_string());
+        for digit in digits_str.iter() {
+            digits.push(digit.to_string());
         };
 
         Ok(Line{numbers,digits})

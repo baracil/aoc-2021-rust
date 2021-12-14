@@ -1,17 +1,12 @@
 use std::collections::HashMap;
 use crate::days::day_05::position::Position;
 
+#[derive(Default)]
 pub struct OverlapCounter {
     nb_overlaps:u32,
     positions:HashMap<Position,u32>,
 }
 
-
-impl Default for OverlapCounter {
-    fn default() -> Self {
-        OverlapCounter{ nb_overlaps:0,positions:HashMap::new()}
-    }
-}
 
 impl OverlapCounter {
 

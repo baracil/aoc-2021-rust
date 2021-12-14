@@ -1,5 +1,5 @@
 use crate::days::day_13::main::day13_launch;
-use crate::problem::{AOCResult, Part};
+use crate::problem::Part;
 
 mod problem;
 mod domain;

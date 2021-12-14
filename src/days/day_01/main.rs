@@ -10,11 +10,11 @@ pub fn day01_launch(part: Part) -> AOCResult<String> {
     Ok(count.to_string())
 }
 
-fn part1(depths: &Vec<u32>) -> u32 {
+fn part1(depths: &[u32]) -> u32 {
     count_increasing(depths,1)
 }
 
-fn part2(depths: &Vec<u32>) -> u32 {
+fn part2(depths: &[u32]) -> u32 {
     count_increasing(depths,3)
 }
 
@@ -25,7 +25,7 @@ fn parse_input(for_test:bool) -> AOCResult<Vec<u32>> {
 }
 
 
-fn count_increasing(depths: &Vec<u32>, step: usize) -> u32 {
+fn count_increasing(depths: &[u32], step: usize) -> u32 {
     let mut count: u32 = 0;
     for pos in 0..(depths.len() - step) {
         if depths[pos + step] > depths[pos] {

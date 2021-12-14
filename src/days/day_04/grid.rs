@@ -31,7 +31,7 @@ impl Grid {
             })
             .collect();
 
-        return Grid::new(numbers);
+        Grid::new(numbers)
     }
 
     fn new(numbers: HashMap<u32, GridPosition>) -> Self {
@@ -54,10 +54,10 @@ impl Grid {
             new_grid.columns[position.column()]+=1;
             new_grid.rows[position.row()]+=1;
             if new_grid.columns[position.column()] == GRID_SIZE_U32 || new_grid.rows[position.row()] == GRID_SIZE_U32 {
-                let result:u32 = new_grid.numbers.keys().map(|u| *u).sum();
+                let result:u32 = new_grid.numbers.keys().sum();
                 new_grid.state = Winning(result*number_drawn)
             }
         };
-        return new_grid;
+        new_grid
     }
 }

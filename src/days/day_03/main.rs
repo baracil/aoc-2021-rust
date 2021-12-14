@@ -26,7 +26,7 @@ impl DiagnosticReport {
             }
         };
         let epsilon = ((1 << self.size) - 1) ^ gamma;
-        return PowerConsumption { gamma_rate: gamma, epsilon_rate: epsilon };
+        PowerConsumption { gamma_rate: gamma, epsilon_rate: epsilon }
     }
 
 
@@ -35,8 +35,7 @@ impl DiagnosticReport {
         let oxygen_generator_rating = self.compute_life_support_rating(|b| b>=0);
         let co2_scrubber_rating = self.compute_life_support_rating(|b| b<0);
 
-        return LifeSupport{oxygen_generator_rating,co2_scrubber_rating}
-
+        LifeSupport{oxygen_generator_rating,co2_scrubber_rating}
     }
 
     fn compute_life_support_rating(&self, criteria_predicate: impl Fn(i32) -> bool) -> i32 {
@@ -60,7 +59,7 @@ impl DiagnosticReport {
                 }
             }
         }
-        return sieve_value
+        sieve_value
     }
 }
 
@@ -69,7 +68,7 @@ fn get_bit_offset(value:&i32, bit_mask:i32) -> i32 {
     if (value & bit_mask) == 0 { -1 } else {  1 }
 }
 
-fn compute_bit_balance(values: &Vec<i32>, sieve_value: i32, sieve_mask: i32, bit_mask: i32) -> BalanceResult {
+fn compute_bit_balance(values: &[i32], sieve_value: i32, sieve_mask: i32, bit_mask: i32) -> BalanceResult {
     let mut balance = 0;
     let mut nb_matches = 0;
     let mut a_value = -1;

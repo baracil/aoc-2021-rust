@@ -12,7 +12,7 @@ pub fn day05_launch(part: Part) -> AOCResult<String> {
     }
 }
 
-fn solve(vent:&Vec<Vent>, filter:fn(&Vent)->bool) -> AOCResult<String> {
+fn solve(vent:&[Vent], filter:fn(&Vent)->bool) -> AOCResult<String> {
     let mut counter = OverlapCounter::default();
     let result = vent.iter()
         .filter(|v| filter(v))
@@ -22,11 +22,11 @@ fn solve(vent:&Vec<Vent>, filter:fn(&Vent)->bool) -> AOCResult<String> {
 
 }
 
-fn part1(vent:&Vec<Vent>) -> AOCResult<String> {
+fn part1(vent:&[Vent]) -> AOCResult<String> {
     solve(vent,Vent::is_vertical_or_horizontal)
 }
 
-fn part2(vent:&Vec<Vent>) -> AOCResult<String> {
+fn part2(vent:&[Vent]) -> AOCResult<String> {
     solve(vent,|_v| true)
 }
 

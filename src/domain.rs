@@ -12,7 +12,7 @@ impl FromStr for SubCommand {
 
     fn from_str(command_as_str: &str) -> Result<Self, Self::Err> {
         let tokens:Vec<&str> = command_as_str.trim()
-            .splitn(2, " ")
+            .splitn(2, ' ')
             .collect();
 
         if tokens.len() != 2 {
@@ -70,7 +70,7 @@ impl Submarine {
     }
 
     pub fn depth(&self) -> i32 {
-        return -self.position.y;
+        -self.position.y
     }
 
     fn translate(&self, dx: i32, dy: i32) -> Submarine {

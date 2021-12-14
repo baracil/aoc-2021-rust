@@ -46,7 +46,7 @@ pub fn day06_launch(part: Part) -> AOCResult<String> {
 }
 
 fn solve(school:&School, nb_generation:u32) -> u128 {
-    let mut school = school.clone();
+    let mut school = *school;
     for _i in 0..nb_generation {
         school.perform_one_tick();
     }

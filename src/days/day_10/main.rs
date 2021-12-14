@@ -12,25 +12,24 @@ pub fn day10_launch(part: Part) -> AOCResult<String> {
     }
 }
 
-fn part1(lines:&Vec<String>) -> AOCResult<String> {
-    let score:usize = lines.iter()
-        .map(|l| syntax_score(l))
+fn part1(lines: &[String]) -> AOCResult<String> {
+    let score: usize = lines.iter()
+        .map(|s| syntax_score(s))
         .sum();
 
     Ok(score.to_string())
-
 }
 
-fn part2(lines:&Vec<String>) -> AOCResult<String> {
-    let mut score:Vec<usize> = lines.iter().flat_map(|l| complete_score(l)).collect();
-    score.sort();
+fn part2(lines: &[String]) -> AOCResult<String> {
+    let mut score: Vec<usize> = lines.iter().flat_map(|s|complete_score(s)).collect();
+    score.sort_unstable();
     let len = score.len();
 
     Ok(score[len / 2].to_string())
 }
 
 #[allow(dead_code)]
-fn parse_input(for_test:bool) -> AOCResult<Vec<String>> {
+fn parse_input(for_test: bool) -> AOCResult<Vec<String>> {
     Problem::factory(for_test)(10).read_input_as_vec_of_line()
 }
 
@@ -40,16 +39,16 @@ mod tests {
     use crate::days::day_10::main::{parse_input, part1, part2};
 
     #[test]
-    fn day10_part1_test()  {
+    fn day10_part1_test() {
         let _input = parse_input(true).unwrap();
         let result = part1(&_input).unwrap();
-        assert_eq!(result,"26397")
+        assert_eq!(result, "26397")
     }
 
     #[test]
-    fn day10_part2_test()  {
+    fn day10_part2_test() {
         let _input = parse_input(true).unwrap();
         let result = part2(&_input).unwrap();
-        assert_eq!(result,"288957")
+        assert_eq!(result, "288957")
     }
 }

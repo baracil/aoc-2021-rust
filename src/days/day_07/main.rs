@@ -10,14 +10,14 @@ pub fn day07_launch(part: Part) -> AOCResult<String> {
     }
 }
 
-fn part1(crabs: &Vec<i32>) -> AOCResult<String> {
+fn part1(crabs: &[i32]) -> AOCResult<String> {
     let size = crabs.len();
     let consumption = move |target: i32| -> i32 { crabs.iter().map(|i| (*i - target).abs()).sum() };
-    let middle = crabs.get(size.div_euclid(2)).ok_or(format!("???"))?;
+    let middle = crabs.get(size.div_euclid(2)).ok_or_else(|| "???".to_string())?;
     Ok(consumption(*middle).to_string())
 }
 
-fn part2(crabs: &Vec<i32>) -> AOCResult<String> {
+fn part2(crabs: &[i32]) -> AOCResult<String> {
     let (p_min,p_max) = find_minimum_position(crabs);
     let consumption = move |target: i32| -> i32 { crabs.iter().map(|i|arithmetic_consumption(*i,target)).sum() };
 
@@ -33,7 +33,7 @@ fn part2(crabs: &Vec<i32>) -> AOCResult<String> {
     Ok((result).to_string())
 }
 
-fn find_minimum_position(crabs: &Vec<i32>) -> (i32,i32) {
+fn find_minimum_position(crabs: &[i32]) -> (i32,i32) {
     let derivate = |target:i32| -> i32 {crabs.iter().map(|crab| derivate_part2(*crab,target)).sum()};
 
     let mut p_min = *crabs.get(0).unwrap();
@@ -69,7 +69,7 @@ fn find_minimum_position(crabs: &Vec<i32>) -> (i32,i32) {
 
 fn arithmetic_consumption(position: i32, target: i32) -> i32 {
     let dif = (position - target).abs();
-    return (dif * (dif + 1)).div_euclid(2);
+    (dif * (dif + 1)).div_euclid(2)
 }
 
 fn derivate_part2(position:i32, target:i32) -> i32 {
@@ -81,10 +81,10 @@ fn derivate_part2(position:i32, target:i32) -> i32 {
 #[allow(dead_code)]
 fn parse_input(for_test: bool) -> AOCResult<Vec<i32>> {
     let mut crabs: Vec<i32> = Problem::factory(for_test)(7)
-        .read_input()?.split(",")
+        .read_input()?.split(',')
         .map(|s| parse_input!(s,i32))
         .collect();
-    crabs.sort();
+    crabs.sort_unstable();
     Ok(crabs)
 }
 

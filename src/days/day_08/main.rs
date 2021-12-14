@@ -51,18 +51,15 @@ pub fn day08_launch(part: Part) -> AOCResult<String> {
     }
 }
 
-fn part1(lines: &Vec<Line<String>>) -> AOCResult<String> {
+fn part1(lines: &[Line<String>]) -> AOCResult<String> {
 
     Ok(lines.iter()
         .flat_map(|l| l.digits().iter())
-        .filter(|l| match l.len() {
-            2 | 3 | 4 | 7 => true,
-            _ => false
-        })
+        .filter(|l| matches!(l.len(),2 | 3 | 4 | 7))
         .count().to_string())
 }
 
-fn part2(lines: &Vec<Line<String>>) -> AOCResult<String> {
+fn part2(lines: &[Line<String>]) -> AOCResult<String> {
     let lines: Vec<Line<u32>> = lines
         .iter()
         .map(Line::transform_to_u32)

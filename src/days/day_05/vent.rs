@@ -1,3 +1,4 @@
+use std::cmp::Ordering;
 use std::str::FromStr;
 use crate::days::day_05::position::Position;
 
@@ -28,12 +29,10 @@ impl Vent {
 }
 
 pub fn sign(value: i32) -> i32 {
-    if value == 0 {
-        0
-    } else if value < 0 {
-        return -1;
-    } else {
-        1
+    match value.cmp(&0) {
+        Ordering::Less => -1,
+        Ordering::Equal => 0,
+        Ordering::Greater => 1
     }
 }
 
