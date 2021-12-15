@@ -2,7 +2,9 @@ use std::collections::HashMap;
 use crate::days::day_14::computer::DistriComputer;
 use crate::Part;
 use crate::problem::{AOCResult, Problem};
-use crate::tools::{capital_to_couple_u8, capital_to_u8};
+use crate::tools::capital_to_u8;
+
+type Input = (String, HashMap<(u8,u8),u8>);
 
 #[allow(dead_code)]
 pub fn day14_launch(part: Part) -> AOCResult<String> {
@@ -24,7 +26,7 @@ fn part2(template:&str, rules:&HashMap<(u8,u8),u8>) -> AOCResult<String> {
 }
 
 #[allow(dead_code)]
-fn parse_input(for_test:bool) -> AOCResult<(String, HashMap<(u8,u8),u8>)> {
+fn parse_input(for_test:bool) -> AOCResult<Input> {
     let content = Problem::factory(for_test)(14).read_input()?;
     let split_content = content
         .split_once("\n\n")

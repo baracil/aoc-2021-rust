@@ -20,7 +20,7 @@ impl DistriComputer<'_> {
         let result = chars.windows(2).map(capital_to_couple_u8)
             .map(|(left, right)| {
                 let mut cache = HashMap::<(u8,u8,u32),Distribution>::new();
-                self.compute_for_couple(left, right, generation, &mut cache).clone()
+                self.compute_for_couple(left, right, generation, &mut cache)
             })
             .reduce(|d1, d2| (d1 + d2)).unwrap();
 
