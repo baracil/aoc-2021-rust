@@ -1,6 +1,4 @@
 
-//TODO use lifetime you lazy dev
-
 pub struct Reader {
     message: String,
     end: usize,
