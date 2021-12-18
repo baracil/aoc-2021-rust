@@ -32,7 +32,6 @@ fn parse_input(for_test:bool) -> AOCResult<String> {
 #[cfg(test)]
 #[allow(dead_code)]
 mod tests {
-    use crate::days::day_16::main::{parse_input, part1, part2};
     use crate::days::day_16::packet_reader::read_packet;
     use crate::days::day_16::reader::Reader;
 
@@ -86,9 +85,4 @@ mod tests {
         assert_eq!(result,0)
     }
 
-    #[test]
-    #[ignore]
-    fn day16_part2_test()  {
-//        assert_eq!(result,"")
-    }
 }

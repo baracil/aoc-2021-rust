@@ -39,18 +39,16 @@ mod tests {
     use crate::days::day_11::main::{parse_input, part1, part2};
 
     #[test]
-    #[ignore]
     fn day11_part1_test()  {
-        let _input = parse_input(true).unwrap();
-        let result = part1(&_input).unwrap();
-        assert_eq!(result,"")
+        let lines = parse_input(true).unwrap();
+        let result = part1(&lines).unwrap();
+        assert_eq!(result,"1656")
     }
 
     #[test]
-    #[ignore]
     fn day11_part2_test()  {
         let _input = parse_input(true).unwrap();
         let result = part2(&_input).unwrap();
-        assert_eq!(result,"")
+        assert_eq!(result,"195")
     }
 }
