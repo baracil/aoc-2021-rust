@@ -29,7 +29,10 @@ fn is_in_target(vx: i32, vy: i32, target: &Target) -> bool {
 
 //3741 to low
 fn part1(target: &Target) -> AOCResult<String> {
-    let max_vy = (1..-target.ymin()).filter(|vy| (1..target.xmax()).any(|vx| is_in_target(vx,*vy,target))).max().unwrap();
+    let max_vy = (0..-target.ymin()).rev()
+        .find(|y0| can_reach(*y0,target.ymin(),target.ymax()))
+        .ok_or("Cannot find a solution")?;
+
     Ok((max_vy * (max_vy + 1) / 2).to_string())
 }
 
@@ -43,6 +46,17 @@ fn part2(target:&Target) -> AOCResult<String> {
 #[allow(dead_code)]
 fn parse_input(for_test: bool) -> AOCResult<Target> {
     Problem::factory(for_test)(17).read_input().map(|l| parse_input!(l,Target))
+}
+
+fn can_reach(y0:i32, y_last:i32,y_first:i32) -> bool {
+    let n_min = n(y0,y_first).ceil();
+    let n_max = n(y0,y_last).floor();
+    n_min<=n_max
+}
+
+fn n(y0:i32, y:i32) -> f32 {
+    let b = (1+2*y0) as f32;
+    return 0.5*(b+(b*b-8.*(y as f32)))
 }
 
 #[cfg(test)]

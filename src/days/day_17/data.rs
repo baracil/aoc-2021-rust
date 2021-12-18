@@ -24,6 +24,9 @@ impl Target {
     pub fn ymin(&self) -> i32 {
         self.ymin
     }
+    pub fn ymax(&self) -> i32 {
+        self.ymax
+    }
 }
 
 
