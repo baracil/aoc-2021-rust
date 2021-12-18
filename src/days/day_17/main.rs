@@ -56,7 +56,7 @@ fn can_reach(y0:i32, y_last:i32,y_first:i32) -> bool {
 
 fn n(y0:i32, y:i32) -> f32 {
     let b = (1+2*y0) as f32;
-    return 0.5*(b+(b*b-8.*(y as f32)))
+    0.5*(b+(b*b-8.*(y as f32)))
 }
 
 #[cfg(test)]
