@@ -29,13 +29,11 @@ impl Problem {
         Self{input_filename}
     }
 
-    #[allow(dead_code)]
     pub fn test_of_day(day:u32) -> Self {
         let input_filename = form_test_filename(day);
         Self{input_filename}
     }
 
-    #[allow(dead_code)]
     pub fn read_input(&self) -> AOCResult<String> {
         let content : io::Result<String> = read_to_string(self.input_filename.to_string());
         match content {
@@ -44,7 +42,6 @@ impl Problem {
         }
     }
 
-    #[allow(dead_code)]
     pub fn read_input_as_mapped_lines<U, F: FnMut(&str) -> U>(&self, op:F) -> AOCResult<Vec<U>> {
         Ok(self.read_input()?
             .split('\n')
@@ -52,12 +49,10 @@ impl Problem {
             .collect())
     }
 
-    #[allow(dead_code)]
     pub fn read_input_as_vec_of_line(&self) -> AOCResult<Vec<String>> {
         self.read_input().map(to_vec_of_line)
     }
 
-    #[allow(dead_code)]
     pub fn read_input_as_vec_of_u32(&self) -> AOCResult<Vec<u32>> {
         self.read_input().map(to_vec_of_u32)
     }

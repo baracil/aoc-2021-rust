@@ -11,7 +11,6 @@ pub mod tools;
 mod day_enum;
 
 
-#[warn(dead_code)]
 fn main() {
     solve(Day::D18);
 }
