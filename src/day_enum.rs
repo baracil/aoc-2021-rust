@@ -16,6 +16,7 @@ use crate::days::day_14::main::day14_launch;
 use crate::days::day_15::main::day15_launch;
 use crate::days::day_16::main::day16_launch;
 use crate::days::day_17::main::day17_launch;
+use crate::days::day_25::main::day25_launch;
 
 #[derive(Debug)]
 #[allow(dead_code)]
@@ -39,6 +40,12 @@ pub enum Day {
     D17,
     D18,
     D19,
+    D20,
+    D21,
+    D22,
+    D23,
+    D24,
+    D25,
 }
 
 impl Day {
@@ -63,6 +70,12 @@ impl Day {
             Day::D17 => day17_launch,
             Day::D18 => day18_launch,
             Day::D19 => day19_launch,
+            Day::D20 => day25_launch,
+            Day::D21 => day25_launch,
+            Day::D22 => day25_launch,
+            Day::D23 => day25_launch,
+            Day::D24 => day25_launch,
+            Day::D25 => day25_launch,
         }
 
     }
