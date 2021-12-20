@@ -16,6 +16,11 @@ use crate::days::day_14::main::day14_launch;
 use crate::days::day_15::main::day15_launch;
 use crate::days::day_16::main::day16_launch;
 use crate::days::day_17::main::day17_launch;
+use crate::days::day_20::main::day20_launch;
+use crate::days::day_21::main::day21_launch;
+use crate::days::day_22::main::day22_launch;
+use crate::days::day_23::main::day23_launch;
+use crate::days::day_24::main::day24_launch;
 use crate::days::day_25::main::day25_launch;
 
 #[derive(Debug)]
@@ -70,11 +75,11 @@ impl Day {
             Day::D17 => day17_launch,
             Day::D18 => day18_launch,
             Day::D19 => day19_launch,
-            Day::D20 => day25_launch,
-            Day::D21 => day25_launch,
-            Day::D22 => day25_launch,
-            Day::D23 => day25_launch,
-            Day::D24 => day25_launch,
+            Day::D21 => day21_launch,
+            Day::D22 => day22_launch,
+            Day::D20 => day20_launch,
+            Day::D23 => day23_launch,
+            Day::D24 => day24_launch,
             Day::D25 => day25_launch,
         }
 
