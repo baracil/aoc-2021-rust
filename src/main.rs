@@ -12,7 +12,7 @@ mod day_enum;
 
 
 fn main() {
-    solve(Day::D18);
+    solve(Day::D19);
 }
 
 
