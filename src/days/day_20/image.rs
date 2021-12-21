@@ -1,7 +1,4 @@
 use std::fmt::{Display, Formatter, Write};
-use std::str::FromStr;
-use itertools::Itertools;
-use crate::days::day_08::main::day08_launch;
 use crate::days::day_20::rule::Rule;
 use crate::days::day_20::state::State;
 use crate::days::day_20::state::State::{Dark, Sentinel};
@@ -9,7 +6,6 @@ use crate::days::day_20::state::State::{Dark, Sentinel};
 #[derive(Clone)]
 pub struct Image {
     border_state: State,
-    nb_rows: usize,
     nb_columns: usize,
     data: Vec<State>,
 }
@@ -117,6 +113,6 @@ impl Image {
             }
         }
 
-        Ok(Image { border_state: Dark, nb_rows: nb_image_rows, nb_columns: nb_image_cols, data })
+        Ok(Image { border_state: Dark, nb_columns: nb_image_cols, data })
     }
 }

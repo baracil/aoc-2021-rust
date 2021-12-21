@@ -31,7 +31,6 @@ impl Report {
 #[derive(Debug)]
 pub struct Match {
     report: Report,
-    rotation_idx:u8,
     offset:Vector,
     nb_common: usize,
 }
@@ -90,7 +89,7 @@ impl Report {
         offsets
             .iter()
             .max_by(|o1, o2| o1.1.cmp(o2.1))
-            .map(|(p, n)| Match { report:transformed_report.translate(p), nb_common: *n, rotation_idx, offset:p.clone() })
+            .map(|(p, n)| Match { report:transformed_report.translate(p), nb_common: *n, offset:p.clone() })
             .filter(|m| m.nb_common >= 12)
     }
 }

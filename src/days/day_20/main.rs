@@ -1,6 +1,6 @@
 use crate::days::day_20::image::Image;
 use crate::days::day_20::rule::Rule;
-use crate::{parse_input, Part, try_parse_input};
+use crate::{Part, try_parse_input};
 use crate::problem::{AOCResult, Problem};
 
 #[allow(dead_code)]
