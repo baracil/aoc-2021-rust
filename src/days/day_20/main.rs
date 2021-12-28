@@ -45,7 +45,7 @@ fn parse_content(content:&str, border_size:usize) -> AOCResult<(Image, Rule)> {
 #[cfg(test)]
 #[allow(dead_code)]
 mod tests {
-    use crate::days::day_20::main::{parse_content, parse_input, part1, part2};
+    use crate::days::day_20::main::{parse_input, part1, part2};
 
     #[test]
     fn day20_part1_test()  {

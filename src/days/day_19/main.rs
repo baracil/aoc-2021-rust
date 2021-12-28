@@ -76,8 +76,7 @@ fn parse_input(for_test: bool) -> AOCResult<Vec<Report>> {
 #[cfg(test)]
 #[allow(dead_code)]
 mod tests {
-    use crate::days::day_19::main::{create_full_report, parse_input, part1, part2};
-    use crate::days::day_19::report::Report;
+    use crate::days::day_19::main::{create_full_report,  part1, part2};
 
 
     #[test]

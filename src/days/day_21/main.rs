@@ -1,5 +1,5 @@
 use crate::{Part, try_parse_input};
-use crate::days::day_21::multi_verse_game::count_won_games;
+use crate::days::day_21::multiverse_game::count_won_games;
 use crate::days::day_21::score_computer::Player;
 use crate::problem::{AOCResult, Problem};
 
