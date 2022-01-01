@@ -9,8 +9,7 @@ impl Organizer {
 
     pub fn organize(burrow:&Burrow) -> Option<usize> {
         let mut organizer = Organizer{cache:HashMap::new()};
-        let result = organizer.minimal_energy_to_organize(burrow);
-        result
+        organizer.minimal_energy_to_organize(burrow)
     }
 
     fn minimal_energy_to_organize(&mut self, burrow:&Burrow) -> Option<usize> {

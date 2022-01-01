@@ -25,7 +25,7 @@ impl Displacement {
         self.energy_cost
     }
 
-    pub  fn positions<'a>(&'a self) -> impl Iterator<Item=Position> + 'a {
+    pub  fn positions(&self) -> impl Iterator<Item=Position> + '_ {
         let up = (HALLWAY_Y+1..=self.start.y).rev().map(|y| Position::of(self.start.x,y));
         let down = (HALLWAY_Y+1..=self.end.y).map(|y| Position::of(self.end.x,y));
 
