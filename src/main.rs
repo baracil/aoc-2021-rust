@@ -10,9 +10,10 @@ mod macros;
 pub mod tools;
 mod day_enum;
 
+//580012
 
 fn main() {
-    solve(Day::D25);
+    solve(Day::D22);
 }
 
 
